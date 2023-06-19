@@ -17,8 +17,8 @@ authRouter.post("/v1/auth/signup", async (request, response) => {
             });
             user = await user.save();
         }
-        const token = jwt.sign({id: user._id}, 'passwordKey');
-        response.json({user: user});
+         const token = jwt.sign({id: user._id}, 'passwordKey');
+        response.json({user, token: token});
     } catch (e) {
         response.status(500).json({message: e.message});
     }

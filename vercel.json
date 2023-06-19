@@ -1,7 +1,13 @@
 {
  "version": 2,
   "functions": {
-    "api/*": {
+    "routes/auth,js": {
+      "memory": 3008,
+      "maxDuration": 60
+    },
+    "routes/document.js": {
+      "memory": 1024,
+      "maxDuration": 30
     }
   },
   "builds": [
