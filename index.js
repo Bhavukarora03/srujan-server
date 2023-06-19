@@ -30,13 +30,13 @@ socketIO.on('connection', (socket) => {
     });
 
     socket.on("save", (data) => {
-        saveData(data);
+        saveData(data)
     });
 });
 const saveData = async (data) => {
     let document = await Document.findById(data.room);
     document.content = data.delta;
-    document = await document.save();
+     await document.save();
 };
 
 server.listen(PORT, "0.0.0.0", () => {
