@@ -6,14 +6,14 @@ const auth = require("../middleswares/auth");
 
 authRouter.post("/v1/auth/signup", async (request, response) => {
     try {
-        const {name, email, profilePicture} = request.body;
+        const {name, email, profilePic} = request.body;
 
         let user = await User.findOne({email: email});
         if (!user) {
             user = new User({
                 name: name,
                 email: email,
-                profilePicture: profilePicture,
+                profilePicture: profilePic,
             });
             user = await user.save();
         }

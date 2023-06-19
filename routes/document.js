@@ -9,9 +9,8 @@ documentRouter.post("/v1/document/create", auth, async (req, res,) => {
         const {createdAt} = req.body;
         let document = new Document({
             uid: req.user,
-            createdAt: createdAt,
             title: 'Untitled',
-
+            createdAt: createdAt,
         });
 
         document = await document.save();
@@ -24,7 +23,7 @@ documentRouter.post("/v1/document/create", auth, async (req, res,) => {
 documentRouter.get("/v1/document/me", auth, async (req, res,) => {
     try {
         let documents = await Document.find({uid: req.user});
-        res.json({documents: documents});
+        res.json(documents);
 
     } catch (e) {
         res.status(500).json({message: e.message});
